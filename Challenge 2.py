@@ -22,6 +22,13 @@ for i in range(len(ages)):
     elif ages[i] <= 18:
         ages_older.append(ages[i])
         marks_older.append(marks[i])
+        
+plt.plot(marks_young, ages_young, "rs")
+plt.plot(marks_older, ages_older, "bo")
+plt.title("Marks in different age groups")
+plt.xlabel("Makrs")
+plt.ylabel("Ages")
+plt.show()        
 
 average_young = sum(marks_young) / len(marks_young)
 average_older = sum(marks_older) / len(marks_older)
