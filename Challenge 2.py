@@ -1,44 +1,54 @@
-import matplotlib.pyplot as plt
+# import statistics
 
-students = [
-    "John Smith", "Jane Doe", "Mary Murphy", "Michael Lawlor", "Conor Whelan",
-    "Kate Walsh", "Shane Duffy"
-]
+students = ["John Smith","Jane Doe", "Mary Murphy", "Michael Lawlor", "Conor Whelan", "Kate Walsh", "Shane Duffy"]
 ages = [16, 17, 18, 17, 18, 15, 19]
 marks = [90, 88, 50, 60, 100, 75, 95]
 
+# Challenge 2
+# Part 1
+import matplotlib.pyplot as plt
+plt.plot(students, marks, "ro")
+plt.xlabel('Names')
+plt.ylabel('Marks')
+plt.title("Student marks")
+plt.savefig("Plot1.png")
+plt.show()
+
+# Part 2 + 3
+student_young = []
 ages_young = []
 marks_young = []
-students_young = []
-ages_older = []
-marks_older = []
-
-x_axis = ['17 or younger', '18 or older']
-
+student_old = []
+ages_old = []
+marks_old = []
 for i in range(len(ages)):
-    if ages[i] <= 17:
-        ages_young.append(ages[i])
-        marks_young.append(marks[i])
-    elif ages[i] <= 18:
-        ages_older.append(ages[i])
-        marks_older.append(marks[i])
-        
-plt.plot(marks_young, ages_young, "rs")
-plt.plot(marks_older, ages_older, "bo")
-plt.title("Marks in different age groups")
-plt.xlabel("Makrs")
-plt.ylabel("Ages")
-plt.show()        
+  if ages[i] <= 17:
+    ages_young.append(ages[i])
+    marks_young.append(marks[i])
+    student_young.append(students[i])
+  if ages[i] >= 18:
+    ages_old.append(ages[i])
+    marks_old.append(marks[i])
+    student_old.append(students[i])
 
-average_young = sum(marks_young) / len(marks_young)
-average_older = sum(marks_older) / len(marks_older)
-
-print(average_young)
-print(average_older)
-
-
-plt.bar(x_axis, average_young, color=(0,0.5,0))
-plt.bar(x_axis, average_older, color=(0,0.5,0))
-plt.title("Average marks in different age groups")
-plt.ylabel("Average Marks")
+plt.plot(marks_young, "ro")
+plt.plot(marks_old, "bs")
+plt.ylabel('Marks')
+plt.title("Student marks")
+plt.savefig("Plot2.png")
 plt.show()
+
+# Part 4
+average_young = sum(marks_young)/len(marks_young)
+average_old = sum(marks_old)/len(marks_old)
+
+averageGrades = [average_young, average_old]
+xLabels = ["17 or younger", "18 or older"]
+
+plt.bar(xLabels, averageGrades)
+plt.xlabel("Ages")
+plt.ylabel('Marks')
+plt.title("Student average marks")
+plt.savefig("Plot3.png")
+plt.show()
+
